@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontak Kami - PeachyApps</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+      color: #333;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e91e63;
+      padding: 15px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd1dc;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #e91e63;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    .contact-info {
+      background: white;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #e91e63;
+    }
+
+    .contact-info p {
+      font-size: 1em;
+      margin-bottom: 10px;
+      line-height: 1.5em;
+    }
+
+    .map-container {
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #e91e63;
+      font-size: 1.5em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffe4ec;
+      color: #777;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .contact-info,
+      .map-container {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="WhatsApp Image 2025-05-19 at 11.26.27_1f24691f.jpg" alt="Logo PeachyApps">
+      <span style="color:white; font-weight:bold; font-size: 1.2em;">PeachyApps</span> 
+    </div>
+    <div>
+    <a href="index.html">Beranda</a> |
+    <a href="produk.html">Produk</a> |
+    <a href="contact.html">Kontak</a> |
+    <a href="about.html">Tentang Kami</a> |
+    <a href="keranjang.html">Keranjang</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Hubungi Kami</h1>
+    <p>Informasi kontak kami dapat Anda lihat di bawah ini</p>
+  </header>
+
+  <div class="contact-info">
+    <h2>Informasi Kontak</h2>
+    <p><strong>Alamat:</strong><br />
+      Jl. Kelapa Dua Raya No.93, Klp. Dua, Kec. Klp. Dua, Kabupaten Tangerang, Banten 15810
+    </p>
+    <p><strong>Telepon:</strong> +62 895-4057-26070</p>
+    <p><strong>Email:</strong> PeachyApps@gmail.com</p>
+  </div>
+
+  <div class="map-container">
+    <h2>Lokasi Kami</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126915.46804877754!2d106.7578267283315!3d-6.208763823670008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3ca1e75e5db%3A0xa9bc18ff542c72e!2sJakarta%2C%20Indonesia!5e0!3m2!1sid!2sid!4v1684979073021!5m2!1sid!2sid"
+      width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 PeachyApps. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

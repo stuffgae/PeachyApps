@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keranjang - PeachyApps</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+      color: #333;
+    }
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      background-color: #e91e63; padding: 15px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      text-decoration: none; color: white; margin: 0 15px;
+      font-weight: bold; transition: color 0.3s;
+    }
+    nav a:hover { color: #ffd1dc; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { width: 40px; height: 40px; border-radius: 8px; }
+    .container {
+      max-width: 900px; margin: 40px auto 60px; background: white;
+      border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    h1 {
+      text-align: center; color: #e91e63; margin-bottom: 30px;
+    }
+    .cart-item {
+      display: flex; align-items: center; gap: 15px;
+      border-bottom: 1px solid #eee; padding: 15px 0;
+    }
+    .cart-item img {
+      width: 60px; height: 60px; object-fit: contain;
+      border-radius: 10px; background: #f9f0f5;
+    }
+    .item-details { flex-grow: 1; }
+    .item-details h4 { margin-bottom: 6px; color: #333; }
+    .item-details p { font-weight: bold; color: #e91e63; }
+    .item-quantity { font-size: 1em; margin-right: 20px; }
+    .btn-remove {
+      background: #e91e63; border: none; color: white;
+      padding: 6px 10px; border-radius: 8px; cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-remove:hover { background: #d81b60; }
+    .total-section {
+      text-align: right; font-size: 1.3em; margin-top: 25px;
+      font-weight: bold; color: #e91e63;
+    }
+    .btn-clear {
+      background: #e91e63; color: white; border: none;
+      padding: 10px 20px; border-radius: 12px; cursor: pointer;
+      display: block; margin: 20px auto 0; font-size: 1em;
+      transition: background-color 0.3s;
+    }
+    .btn-clear:hover { background: #d81b60; }
+    footer {
+      text-align: center; padding: 20px; background-color: #ffe4ec;
+      color: #777; font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      .cart-item {
+        flex-direction: column; align-items: flex-start;
+      }
+      .item-quantity { margin: 10px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="WhatsApp Image 2025-05-19 at 11.26.27_1f24691f.jpg" alt="Logo PeachyApps" />
+      <span style="color:white; font-weight:bold; font-size: 1.2em;">PeachyApps</span>
+    </div>
+    <div>
+      <a href="index.html">Beranda</a> |
+      <a href="produk.html">Produk</a> |
+      <a href="contact.html">Kontak</a> |
+      <a href="about.html">Tentang Kami</a> |
+      <a href="keranjang.html">Keranjang</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Keranjang Belanja Anda</h1>
+    <div id="cart-items"></div>
+    <div class="total-section" id="total-price"></div>
+
+    <!-- Opsi Pembayaran -->
+    <div style="margin-top: 20px;">
+      <label for="payment-method" style="font-weight: bold; color: #e91e63;">Pilih Metode Pembayaran:</label>
+      <select id="payment-method" style="margin-top: 8px; padding: 8px; border-radius: 8px; border: 1px solid #ccc; width: 100%; max-width: 300px;">
+        <option value="Transfer Bank">Transfer Bank</option>
+        <option value="DANA">DANA</option>
+        <option value="OVO">OVO</option>
+        <option value="Gopay">Gopay</option>
+        <option value="ShopeePay">ShopeePay</option>
+      </select>
+    </div>
+
+    <button class="btn-clear" onclick="clearCart()">Bersihkan Keranjang</button>
+    <button class="btn-clear" onclick="checkoutToWhatsApp()">Checkout via WhatsApp</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 PeachyApps. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function loadCart() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalPriceContainer = document.getElementById('total-price');
+
+      let cart = JSON.parse(localStorage.getItem('peachyCart')) || [];
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Keranjang belanja Anda kosong.</p>";
+        totalPriceContainer.innerHTML = "";
+        return;
+      }
+
+      cartItemsContainer.innerHTML = "";
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" />
+          <div class="item-details">
+            <h4>${item.name}</h4>
+            <p>Rp ${item.price.toLocaleString('id-ID')}</p>
+          </div>
+          <div class="item-quantity">Jumlah: ${item.quantity}</div>
+          <button class="btn-remove" onclick="removeItem(${index})">Hapus</button>
+        `;
+
+        cartItemsContainer.appendChild(div);
+      });
+
+      totalPriceContainer.textContent = "Total Harga: Rp " + totalPrice.toLocaleString('id-ID');
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('peachyCart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('peachyCart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      if (confirm('Yakin ingin mengosongkan keranjang?')) {
+        localStorage.removeItem('peachyCart');
+        loadCart();
+      }
+    }
+
+    function checkoutToWhatsApp() {
+      const cart = JSON.parse(localStorage.getItem('peachyCart')) || [];
+      if (cart.length === 0) {
+        alert("Keranjang masih kosong.");
+        return;
+      }
+
+      const paymentMethod = document.getElementById('payment-method').value;
+
+      let message = 'Halo! Saya ingin memesan:\n';
+      let total = 0;
+
+      cart.forEach(item => {
+        message += `\n- ${item.name} (x${item.quantity}) - Rp ${item.price.toLocaleString('id-ID')}`;
+        total += item.price * item.quantity;
+      });
+      message += `\n\nTotal: Rp ${total.toLocaleString('id-ID')}`;
+      message += `\nMetode Pembayaran: ${paymentMethod}`;
+
+      const encodedMsg = encodeURIComponent(message);
+      const phoneNumber = '6285717218483'; // Ganti dengan nomor WhatsApp Anda
+      const waLink = `https://wa.me/${phoneNumber}?text=${encodedMsg}`;
+      window.open(waLink, '_blank');
+    }
+
+    window.onload = loadCart;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daftar Aplikasi Premium - PeachyApps</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e91e63;
+      padding: 15px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav .menu a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav .menu a:hover {
+      color: #ffd1dc;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      color: #e91e63;
+      margin: 40px 0 20px;
+    }
+
+    .produk-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 20px;
+      background-color: #ffe4ec;
+      border-radius: 15px;
+    }
+
+    .produk-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .produk-card:hover {
+      transform: translate(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .produk-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .produk-card h4 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .produk-card select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.95em;
+    }
+
+    .produk-card button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95em;
+      transition: background-color 0.3s;
+    }
+
+    .produk-card button:hover {
+      background-color: #d81b60;
+    }
+
+    footer {
+      background-color: #ffe4ec;
+      color: #777;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: auto;
+      border-radius: 12px 12px 0 0;
+    }
+
+    @media (max-width: 768px) {
+      nav .menu {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="WhatsApp Image 2025-05-19 at 11.26.27_1f24691f.jpg" alt="Logo PeachyApps" />
+      <span>PeachyApps</span>
+    </div>
+    <div class="menu">
+      <a href="index.html">Beranda</a> |
+      <a href="produk.html">Produk</a> |
+      <a href="contact.html">Kontak</a> |
+      <a href="about.html">Tentang Kami</a> |
+      <a href="keranjang.html">Keranjang</a>
+    </div>
+  </nav>
+
+  <h1>Daftar Aplikasi Premium</h1>
+
+  <div class="produk-container">
+    <!-- Semua produk akan dimasukkan di sini dengan select -->
+
+    <div class="produk-card">
+      <img src="https://freepnglogo.com/images/all_img/1691829400logo-canva-png.png" alt="Logo Canva" />
+      <h4>Canva Pro</h4>
+      <select class="variant">
+        <option>7 Hari: Rp 5.000</option>
+        <option>3 Bulan: Rp 12.000</option>
+        <option>6 Bulan: Rp 20.000</option>
+        <option>Lifetime: Rp 75.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="Logo Netflix" />
+      <h4>Netflix Premium</h4>
+      <select class="variant">
+        <option>1 Hari: Rp 5.000</option>
+        <option>7 Hari: Rp 13.000</option>
+        <option>1 Bulan: Rp 33.000</option>
+        <option>2 Bulan: Rp 55.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Logo Spotify" />
+      <h4>Spotify Premium</h4>
+     <select class="variant">
+        <option>7 Hari: Rp 8.000</option>
+        <option>1 Bulan: Rp 15.000</option>
+        <option>3 Bulan: Rp 30.000</option>
+        <option>6 Bulan: Rp 75.000</option>
+      </select>
+     <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.W10e3PtuJ0jjaPOx8QjDcAHaD4?w=296&h=180" alt="Logo WeTV" />
+      <h4>WeTV Premium</h4>
+      <select class="variant">
+        <option>7 Hari: Rp 8.000</option>
+        <option>1 Bulan: Rp 13.000</option>
+        <option>3 Bulan: Rp 20.000</option>
+        <option>6 Bulan: Rp 35.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.aByvAl4Fl4Dk3N9fA3IudwHaFM?cb=iwp2&rs=1&pid=ImgDetMain" alt="Logo Youtube" />
+      <h4>Youtube Premium</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 8.000</option>
+        <option>3 Bulan: Rp 20.000</option>
+        <option>6 Bulan: Rp 35.000</option>
+        <option>1 Tahun: Rp 60.000</option>
+      </select>
+     <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.msptGW8SCvxYJzt9TA-HeAHaEK?w=312&h=180" alt="Logo Disney+" />
+      <h4>Disney+ Premium</h4>
+      <select class="variant">
+        <option>7 Hari: Rp 8.000</option>
+        <option>1 Bulan: Rp 13.000</option>
+        <option>3 Bulan: Rp 20.000</option>
+        <option>6 Bulan: Rp 35.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://logowik.com/content/uploads/images/iflix7255.jpg" alt="Logo Iflix" />
+      <h4>Iflix</h4>
+    <select class="variant">
+        <option>7 Hari: Rp 8.000</option>
+        <option>1 Bulan: Rp 13.000</option>
+        <option>3 Bulan: Rp 20.000</option>
+        <option>6 Bulan: Rp 35.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://download.logo.wine/logo/Viu_(streaming_media)/Viu_(streaming_media)-Logo.wine.png" alt="Logo Viu" />
+      <h4>Viu Premium</h4>
+      <select class="variant">
+        <option>7 Hari: Rp 6.000</option>
+        <option>1 Bulan: Rp 8.000</option>
+        <option>3 Bulan: Rp 16.000</option>
+        <option>6 Bulan: Rp 23.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.uv0Qa3UV7iY-rU6MTkCSrwHaEK?cb=iwp2&rs=1&pid=ImgDetMain" alt="Logo Wattpad" />
+      <h4>Wattpad</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 15.000</option>
+        <option>2 Bulan: Rp 25.000</option>
+        <option>3 Bulan: Rp 35.000</option>
+        <option>6 Bulan: Rp 60.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.f6VVflQWqrdeiOF0Xa2KoQHaFj?o=7&cb=iwp2rm=3&rs=1&pid=ImgDetMain" alt="Logo Get Contact" />
+      <h4>Get Contact Premium</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 15.000</option>
+        <option>2 Bulan: Rp 25.000</option>
+        <option>3 Bulan: Rp 35.000</option>
+        <option>6 Bulan: Rp 60.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://download.logo.wine/logo/HBO_Go/HBO_Go-Logo.wine.png" alt="Logo HBO GO" />
+      <h4>HBO GO</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 60.000</option>
+        <option>2 Bulan: Rp 110.000</option>
+        <option>3 Bulan: Rp 130.000</option>
+        <option>6 Bulan: Rp 200.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://logos-world.net/wp-content/uploads/2020/11/Apple-Music-Logo.png" alt="Logo Apple Music" />
+      <h4>Apple Music</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 8.000</option>
+        <option>2 Bulan: Rp 13.000</option>
+        <option>3 Bulan: Rp 18.000</option>
+        <option>6 Bulan: Rp 30.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.BaTZJlpaQ57TgwIwL5GiQAHaEK?cb=iwp2&rs=1&pid=ImgDetMain" alt="Logo Picsart" />
+      <h4>Picsart</h4>
+     <select class="variant">
+        <option>1 Bulan: Rp 17.000</option>
+        <option>2 Bulan: Rp 124.000</option>
+        <option>3 Bulan: Rp 30.000</option>
+        <option>6 Bulan: Rp 50.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt="Logo Amazon" />
+      <h4>Amazon Prime</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 10.000</option>
+        <option>2 Bulan: Rp 20.000</option>
+        <option>3 Bulan: Rp 28.000</option>
+        <option>6 Bulan: Rp 45.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.GmJZopmnf7Zt1FIKM5CcLwAAAA?o=7&cb=iwp2rm=3&rs=1&pid=ImgDetMain" alt="Logo Resso" />
+      <h4>Resso</h4>
+     <select class="variant">
+        <option>1 Bulan: Rp 12.000</option>
+        <option>2 Bulan: Rp 20.000</option>
+        <option>3 Bulan: Rp 28.000</option>
+        <option>6 Bulan: Rp 45.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+
+    <div class="produk-card">
+      <img src="https://th.bing.com/th/id/OIP.70St4RDVNsmRxqBCM8OUtQHaEK?o=7&cb=iwp2rm=3&rs=1&pid=ImgDetMain" alt="Logo VSCO" />
+      <h4>VSCO</h4>
+      <select class="variant">
+        <option>1 Bulan: Rp 12.000</option>
+        <option>2 Bulan: Rp 20.000</option>
+        <option>3 Bulan: Rp 28.000</option>
+        <option>6 Bulan: Rp 45.000</option>
+      </select>
+      <button onclick="addToCart(this)">Beli Sekarang</button>
+    </div>
+    <!-- Saya akan lanjutkan menyisipkan semua produk dari file aslinya dengan dropdown harga -->
+  </div>
+
+  <footer>
+    &copy; 2025 PeachyApps. All rights reserved.
+  </footer>
+  <script>
+function addToCart(button) {
+  const card = button.closest('.produk-card');
+  const name = card.querySelector('h4').innerText;
+  const variant = card.querySelector('select').value;
+  const priceMatch = variant.match(/Rp\s?([\d.]+)/i);
+  const price = priceMatch ? parseInt(priceMatch[1].replace(/\./g, '')) : 0;
+  const img = card.querySelector('img').src;
+
+  let cart = JSON.parse(localStorage.getItem('peachyCart')) || [];
+  const index = cart.findIndex(item => item.name === `${name} - ${variant}`);
+  if (index !== -1) {
+    cart[index].quantity += 1;
+  } else {
+    cart.push({ name: `${name} - ${variant}`, price, img, quantity: 1 });
+  }
+  localStorage.setItem('peachyCart', JSON.stringify(cart));
+  alert(`${name} (${variant}) berhasil ditambahkan ke keranjang!`);
+}
+</script>
+</body>
+</html>
